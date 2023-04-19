@@ -16,7 +16,11 @@ const POSTS: postType[] = [
 ];
 
 // Variation of returns from API and what to put for queryKey
-
+// You can get all the variables from the queryKey object
+// 1. api/posts - ["posts"]
+// 2. api/posts/1 - ["posts", post.id]
+// 3. api/posts?authorId=1 - ["posts", { authorId: 1}]
+// 4. api/2/comments - ["posts", post.id, "comments"]
 
 function App() {
   // Get the queryClient
@@ -24,7 +28,11 @@ function App() {
   // UseQuery
   const postQuery = useQuery({
     queryKey: ['posts'],
-    queryFn: () => wait(1000).then(() => [...POSTS]),
+    queryFn: ({ queryKey }) =>
+      wait(1000).then(() => {
+        console.log(queryKey);
+        return [...POSTS];
+      }),
   });
   console.log(postQuery.data);
   // UseMutation
