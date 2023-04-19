@@ -7,7 +7,8 @@ import { Link, BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // Components
 import BasicQueryAndMutate from './Components/BasicQueryAndMutate';
 import HomePage from './Components/HomePage';
-import Heros from './Components/Heros';
+import Heros from './Components/QueryFetch&Config';
+import UseQueryCallback from './Components/UseQueryCallback';
 
 function App() {
   return (
@@ -22,14 +23,18 @@ function App() {
               <Link to="/basics">Basic of React Query</Link>
             </li>
             <li>
-              <Link to="/heros">Querying of Heros Data</Link>
+              <Link to="/configure">Querying and Configurations</Link>
+            </li>
+            <li>
+              <Link to="/callbacks">Callbacks on Query</Link>
             </li>
           </ul>
         </nav>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/basics" element={<BasicQueryAndMutate />} />
-          <Route path="/heros" element={<Heros />} />
+          <Route path="/configure" element={<Heros />} />
+          <Route path="/callbacks" element={<UseQueryCallback />} />
         </Routes>
       </div>
     </Router>
