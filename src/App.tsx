@@ -25,6 +25,7 @@ const POSTS: postType[] = [
 function App() {
   // Get the queryClient
   const queryClient = useQueryClient();
+
   // UseQuery
   const postQuery = useQuery({
     queryKey: ['posts'],
@@ -33,8 +34,13 @@ function App() {
         console.log(queryKey);
         return [...POSTS];
       }),
+    // If you want stale to remain in cache for 1 sec before changing status
+    // staleTime: 1000,
+    // Refetching of data after every 1 sec interval *** Very useful for data refresh!!
+    // refetchInterval: 1000,
   });
   console.log(postQuery.data);
+
   // UseMutation
   const newPostMutation = useMutation({
     mutationFn: (title: string) => {
@@ -42,7 +48,7 @@ function App() {
         POSTS.push({ id: crypto.randomUUID(), title })
       );
     },
-    // Clear cache and refetch on successful mutation
+    // Clear cache on ["posts"] and refetch on successful mutation
     onSuccess: () => {
       queryClient.invalidateQueries(['posts']);
     },
