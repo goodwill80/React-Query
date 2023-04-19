@@ -21,7 +21,7 @@ function BasicQueryAndMutate() {
   // Get the queryClient
   const queryClient = useQueryClient();
 
-  // UseQuery
+  // UseQuery - all data fetch is cache, if there is changes RQ will do a refetch in background
   const postQuery = useQuery({
     queryKey: ['posts'],
     queryFn: ({ queryKey }) =>
