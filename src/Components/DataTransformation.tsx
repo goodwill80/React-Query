@@ -1,6 +1,6 @@
-// Sometimes, you might want to trigger some actions when the data fetching completes
-// such as opening a modal or navigating to a different page
-// We can make use of useQuery callbacks
+// Data Transformation
+// When you need to manupulate data upon fetching it
+// We can use the "select" function to change the fetched data
 
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
@@ -15,21 +15,25 @@ const fetchHeros = async (): Promise<any> => {
   return await axios.get('http://localhost:4000/heros');
 };
 
-function UseQueryCallback() {
-  // Define a function that will be called on successful calling of data
+function DataTransformation() {
   const onSuccess = (data: any) => {
     console.log('Perform side effect after data fetching', data);
   };
-  // Define a function that will be called if there is an error
+
   const onError = (error: any) => {
     console.log('Perform side effect after encountering error', error);
   };
-  // Define the functions in useQuery main - onSuccess, onError
-  const { isLoading, data, isError, error, isFetching }: any = useQuery({
+
+  // using select - which takes in data from the response
+  const { isLoading, data, isError, error }: any = useQuery({
     queryKey: ['super-heros'],
     queryFn: fetchHeros,
     onSuccess: onSuccess,
     onError: onError,
+    select: (data) => {
+      const herosNames = data.data.map((hero: heroType) => hero.alterEgo);
+      return herosNames;
+    },
   });
 
   if (isLoading) return <div>Loading....</div>;
@@ -37,12 +41,12 @@ function UseQueryCallback() {
 
   return (
     <>
-      <h2>Callbacks</h2>
-      {data?.data.map((hero: heroType) => (
-        <div key={hero.id}>{hero.name}</div>
+      <h2>Data Transformation</h2>
+      {data.map((name: string, index: number) => (
+        <div key={index}>{name}</div>
       ))}
     </>
   );
 }
 
-export default UseQueryCallback;
+export default DataTransformation;

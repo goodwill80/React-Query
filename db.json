@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Batman",
-      "alterEgo": "Bruce Wayne"
+      "alterEgo": "Bruce Wayne batman"
     },
     {
       "id": 2,
@@ -14,6 +14,71 @@
       "id": 3,
       "name": "Wonder women1",
       "alterEgo": "Pricess Diana"
+    },
+    {
+      "id": 85.15830290938038,
+      "name": "spiderman",
+      "alterEgo": "peter parker"
+    },
+    {
+      "id": 85.50214037942948,
+      "name": "spiderman",
+      "alterEgo": "peter parker"
+    },
+    {
+      "id": 16.501059144107955,
+      "name": "hulk",
+      "alterEgo": "bruce"
+    },
+    {
+      "id": 92.795647556064,
+      "name": "hulk",
+      "alterEgo": "bruce"
+    },
+    {
+      "id": 7.946763080650099,
+      "name": "xmen",
+      "alterEgo": "prof x"
+    },
+    {
+      "id": 19.8497107834952,
+      "name": "wolfarine",
+      "alterEgo": "prof x"
+    },
+    {
+      "id": 3.846256458678199,
+      "name": "thor",
+      "alterEgo": "thor"
+    }
+  ],
+  "friends": [
+    {
+      "id": 1,
+      "name": "Chandler"
+    },
+    {
+      "id": 2,
+      "name": "Jonathan"
+    },
+    {
+      "id": 3,
+      "name": "Oliver"
+    }
+  ],
+  "users": [
+    {
+      "id": "jonathan@gmail.com",
+      "channelId": "typescript"
+    }
+  ],
+  "channels": [
+    {
+      "id": "typescript",
+      "courses": [
+        "react",
+        "vue",
+        "angular"
+      ]
     }
   ]
 }
